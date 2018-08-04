@@ -1,0 +1,41 @@
+<!-- Matias Ruiz -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Looping a triangle</title>
+
+    <script>
+        let hashtag = "#";
+        let empty = " ";
+        let string = "";
+
+        let size = Number(prompt("Board size:"));
+
+        if (size) {
+            for (let column = 0; column < size; column++) {
+                if (column % 2 == 0) {
+                    for (let row = 0; row < size; row++) {
+                        string += empty;
+                        string += hashtag;
+                    }
+                } else {
+                    for (let row = 0; row < size; row++) {
+                        string += hashtag;
+                        string += empty;
+                    }
+                }
+                string += "\n";
+            }
+            console.log(string);
+        } else {
+            console.log("Please insert a valid number");
+            console.log(size);
+        }
+    </script>
+
+</head>
+
+</html>
