@@ -1,0 +1,22 @@
+<!-- Matias Ruiz -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Evenness</title>
+
+    <script>
+        function isEven(number) {
+            if (number == 0) return true;
+            if (number < 0) return false;
+            return isEven(number - 2);
+        }
+        let n = prompt("Give me a whole positive number");
+        console.log(isEven(n) ? `Given number ${n} is even` : `Given number ${n} is not even`);
+    </script>
+
+</head>
+
+</html>
