@@ -1,0 +1,55 @@
+<!-- Matias Ruiz -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>DeepComparison</title>
+
+    <script>
+        function arraysEqual(arrayOne, arrayTwo) {
+            if (arrayOne.length != arrayTwo.length) return false;
+            for (let i = 0; i < arrayOne.length; i++) {
+                if (arrayOne[i] !== arrayTwo[i]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+
+        function deepComparison(elementA, elementB) {
+            let arrayPropertiesA = [];
+            let arrayPropertiesB = [];
+            if (typeof elementA === 'object') {
+                if (typeof elementB === 'object') {
+                    arrayPropertiesA = Object.keys(elementA);
+                    arrayPropertiesB = Object.keys(elementB);
+                    if (arraysEqual(arrayPropertiesA, arrayPropertiesB)) {
+                        for (let count = 0; count < arrayPropertiesA.length; count++) {
+                            console.log(arrayPropertiesA[count] + ":" + elementA[arrayPropertiesA[count]] + "=" + elementB[arrayPropertiesA[count]] + "?");
+                            if (elementA[arrayPropertiesA[count]] !== elementB[arrayPropertiesA[count]]) return false;
+                        }
+                        return true;
+                    }
+                }
+            }
+            return true;
+        }
+
+        // console.log(arraysEqual(["1", "2", "3"], ["1", "2", 3]));
+
+
+        console.log(deepComparison({
+            name: "Paco",
+            age: 32
+        }, {
+            name: "Paco",
+            age: 32
+        }));
+    </script>
+
+</head>
+
+</html>
