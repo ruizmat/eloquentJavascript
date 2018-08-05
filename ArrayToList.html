@@ -33,7 +33,7 @@
         function listToArray(list) {
             let array = [];
 
-            // por definicion gastamos esta notacion para recorrer la lista
+            // cada iteracion convertimos el nodo en el resto de la lista, hasta que es null
             for (let node = list; node; node = node.rest) {
                 array.push(node.value);
             }
