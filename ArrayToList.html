@@ -1,0 +1,57 @@
+<!-- Matias Ruiz -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ArrayToList</title>
+
+    <script>
+        let array = [1, 2, 3];
+
+        function arrayToList(array) {
+            cpArray = array.slice();
+            let list = null;
+            while (cpArray.length > 0) {
+                list = {
+                    value: cpArray.pop(),
+                    rest: list
+                }
+            }
+            return list;
+        }
+
+        function prepend(number, oldList = null) {
+            let newList = {
+                value: number,
+                rest: oldList
+            }
+            return newList;
+        }
+
+        function listToArray(list) {
+            let array = [];
+
+            // por definicion gastamos esta notacion para recorrer la lista
+            for (let node = list; node; node = node.rest) {
+                array.push(node.value);
+            }
+            return array;
+        }
+
+        function nth(list, n) {
+            if (!list) return undefined;
+            else if (n == 0) return list.value;
+            else return nth(list.rest, n - 1);
+        }
+
+        console.log(arrayToList(array));
+        console.log(prepend(0, prepend(20)));
+        console.log(prepend(0, arrayToList(array)));
+        console.log(nth(arrayToList(array), 1));
+    </script>
+
+</head>
+
+</html>
