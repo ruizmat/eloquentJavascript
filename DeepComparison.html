@@ -8,6 +8,7 @@
     <title>DeepComparison</title>
 
     <script>
+        // this function can be avoid using includes(key) 
         function arraysEqual(arrayOne, arrayTwo) {
             if (arrayOne.length != arrayTwo.length) return false;
             for (let i = 0; i < arrayOne.length; i++) {
@@ -18,8 +19,9 @@
             return true;
         }
 
-
+        // my function
         function deepComparison(elementA, elementB) {
+            if ((elementA === null) || (elementB === null)) return false;
             let arrayPropertiesA = [];
             let arrayPropertiesB = [];
             if (typeof elementA === 'object') {
@@ -28,18 +30,39 @@
                     arrayPropertiesB = Object.keys(elementB);
                     if (arraysEqual(arrayPropertiesA, arrayPropertiesB)) {
                         for (let count = 0; count < arrayPropertiesA.length; count++) {
-                            console.log(arrayPropertiesA[count] + ":" + elementA[arrayPropertiesA[count]] + "=" + elementB[arrayPropertiesA[count]] + "?");
                             if (elementA[arrayPropertiesA[count]] !== elementB[arrayPropertiesA[count]]) return false;
                         }
                         return true;
                     }
                 }
             }
+            return false;
+        }
+
+        // book beautiful solution
+        function deepEqual(a, b) {
+            if (a === b) return true;
+
+            if (a == null || typeof a != "object" ||
+                b == null || typeof b != "object") return false;
+
+            let keysA = Object.keys(a),
+                keysB = Object.keys(b);
+
+            if (keysA.length != keysB.length) return false;
+
+            for (let key of keysA) {
+                if (!keysB.includes(key) || !deepEqual(a[key], b[key])) return false;
+            }
+
             return true;
         }
 
+
         // console.log(arraysEqual(["1", "2", "3"], ["1", "2", 3]));
 
+
+        console.log(deepComparison(1, 1));
 
         console.log(deepComparison({
             name: "Paco",
@@ -48,6 +71,8 @@
             name: "Paco",
             age: 32
         }));
+
+        console.log(deepComparison(null, null));
     </script>
 
 </head>
